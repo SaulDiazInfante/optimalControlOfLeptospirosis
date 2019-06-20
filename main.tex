@@ -172,7 +172,48 @@ We also consider a simplified version of the above model.
     \end{aligned}
 \end{equation}
 
-    \section{Control policies in }
+    \section{Control policies for Leptospirosis in Live Stock }
+    \paragraph{Notation n}
+    We denote by $u_1(t)$ the proportion of vaccinated live-stock,
+    and by $u_2(t)$ the bacterial fumigation strategies....
+    Our controlled model reads:
+    \begin{equation}
+    \begin{aligned}
+        \lambda_H &:= u_2(t) (\bar{\beta}_{HH} I_H + \bar{\beta}_{AH} I_A)
+        \\
+        \lambda_A &:= 
+            u_2(t)(\bar{\beta}_{HA} + \bar{\beta}_{AA}) I_A
+        + \bar{\beta}_{AA} I_A
+        \\
+        \frac{d S_H}{dt} &=
+        b (S_A + (1 - q) I_A + R_A)
+        -\lambda_H S_H - (\mu_H + m) S_H 
+        - u_1(t)  S_H + \alpha_H u_1(t) R_H
+        \\
+        \frac{d I_H}{dt} &=
+        (1 - \sigma)  q  b  I_A
+        + \lambda_H S_H - (\mu_H + \delta_H + \gamma_H)I_H
+        - u_1(t) I_H
+        \\
+        \frac{d R_H}{dt} &=
+        \gamma_H I_H - (\mu_H + m) R_H
+        + u_1(t) (S_H + I_H) - \alpha_H u_1(t) R_H
+        \\
+        \frac{dS_A}{dt} &=
+        \Lambda + m S_H - \lambda_A S_A - \mu_A S_A
+        - u_1(t) S_A + \alpha_R u_1(t) R_A
+        \\
+        \frac{d I_A}{dt} &=
+        \lambda_A S_A - (\mu_A + \gamma_A)   I_A
+        - u_1(t) I_A
+        \\
+        \frac{dR_A}{dt} &=
+        m R_H + \gamma_A I_A - \mu_A R_A
+        + u_1(t) (S_A + I_A) - \alpha_A u_1(t) R_A
+    \end{aligned}
+\end{equation}    
+    
+
     \section{Existence and characterization of optimal policies}
     \section{Numerical analysis}
     \section{Numerical experiments}

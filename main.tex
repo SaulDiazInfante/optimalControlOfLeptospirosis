@@ -53,6 +53,7 @@
          ITSON's address
         }
 
+<<<<<<< HEAD
         \address[add:unison]{
             Departamento de Matem\'aticas, 
             Universidad de Sonora,
@@ -77,6 +78,80 @@
     \end{frontmatter}
     \linenumbers
     \section{Introduction}
+=======
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\s}{\subseteq}
+\newcommand{\e}{\varepsilon}
+%
+%
+%
+%%title
+\makeatletter
+\renewcommand{\Function}[2]{%
+  \csname ALG@cmd@\ALG@L @Function\endcsname{#1}{#2}%
+  \def\jayden@currentfunction{#1}%
+}
+\newcommand{\funclabel}[1]{%
+  \@bsphack
+  \protected@write\@auxout{}{%
+    \string\newlabel{#1}{{\jayden@currentfunction}{\thepage}}%
+  }%
+  \@esphack
+}
+\makeatother
+\title[%
+	A optimal Controlled Leptospirosis Model%
+	]{
+	A optimal Controlled Leptospirosis Model
+}
+%
+%
+ 
+\author[D. Baca]{David Baca-Carrasco}
+\email{\tt david.baca@itson.edu.mx}
+\author[S. D\'iaz-Infante]{Saul D\'iaz-Infante}
+\email{\tt sdinfante@conacyt.mx}
+\author[M.A. Acu\~{n}a]{Manuel Adrian Acu\~{n}a-Zegarra}
+\email{\tt adrian.acuna@unison.mx}
+%
+\address[D. Baca-Carrasco]{
+  Departamento de Matem\'aticas, 
+  Instituto Tecnológico de Sonora,
+  Cd. Obregón, Sonora.
+}
+\address[S. D\'iaz-Infante]{
+  Departamento de Matem\'aticas, 
+  CONACYT-Universidad de Sonora,
+  Hermosillo, Sonora.
+}
+
+\address[M. A. Acu\~{n}a-Zegarra]{
+  Departamento de Matem\'aticas, 
+  Universidad de Sonora,
+  Hermosillo, Sonora.
+}
+%
+%
+\keywords{%
+  SIR, SEIR, optimal control, epidemic models, 
+  forward-backward-sweep method, Pontryagin maximum principle}
+\subjclass[2010]{49K15, 49M05, 92D30}
+%
+\begin{document}
+  \begin{abstract}
+    We survey some theoretical results about a family of optimal 
+    control problems that arise in epidemiology. We also implement the
+    so-called forward-backward-sweep method in Python to find approximate
+    optimal control policies via the Pontryagin maximum principle. 
+    In addition, four specific models are described and simulated.
+  \end{abstract}
+\maketitle
+%
+  \section{Introduction}
+  %
+ 
+>>>>>>> 31c41b4fcfef5fca9fe8443b335ae28f6cf686f3
 \section{The uncontrolled leptospirosis model}
       \begin{equation}
         \begin{aligned}
@@ -285,6 +360,10 @@ We also consider a simplified version of the above model.
         \right]
         \end{aligned}
     \end{equation*}
+<<<<<<< HEAD
+=======
+    \section{Numerical analysis}
+>>>>>>> 31c41b4fcfef5fca9fe8443b335ae28f6cf686f3
     \section{Numerical experiments}
     \section{Concluding remarks}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

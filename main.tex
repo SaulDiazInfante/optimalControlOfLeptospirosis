@@ -1,121 +1,87 @@
-\documentclass[11pt]{amsart}
-\usepackage[english]{babel}
-\usepackage[utf8x]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[numbers, sort&compress]{natbib}
-\usepackage[a4paper,%
-      top=3cm,%
-      bottom=2cm,%
-      left=3cm,%
-      right=3cm,%
-      marginparwidth=1.75cm]{geometry}
-\usepackage{amsmath, amsthm, amssymb, amsfonts, enumerate}
+\documentclass[3p,sort&compress]{elsarticle}
+\usepackage[USenglish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{ragged2e}
+\usepackage{amsthm}
+\usepackage{MnSymbol}
+\usepackage{bbm}
+\usepackage[titletoc,toc,title]{appendix}
+\usepackage{natbib}
+\usepackage{subfig}
 \usepackage{graphicx}
-\usepackage[colorinlistoftodos]{todonotes}
-\usepackage[colorlinks=true, allcolors=blue]{hyperref}
-\usepackage{booktabs}
 \usepackage{siunitx}
+\usepackage{lineno}
+\usepackage{hyperref}
+\usepackage{todonotes}
+\usepackage{proba}
 \usepackage{cleveref}
-\usepackage[foot]{amsaddr}
-\usepackage{float}
-\usepackage[section]{placeins}
-%
-\usepackage{color}
-\usepackage[]{algorithm,algcompatible,lipsum}
-\usepackage[]{algpseudocode}
-\usepackage{listings}
-\usepackage{moreverb}
-%
+\usepackage{booktabs}
+\usepackage{subfig}%
+\newtheorem{definition}{Definition}
 \newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}%[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{assumption}[theorem]{Assumption}
-\theoremstyle{definition}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{definition}[theorem]{Definition}
-%
-
-\numberwithin{equation}{section}
-
-
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\s}{\subseteq}
-\newcommand{\e}{\varepsilon}
-%
-%
-%
-%%title
-\makeatletter
-\renewcommand{\Function}[2]{%
-  \csname ALG@cmd@\ALG@L @Function\endcsname{#1}{#2}%
-  \def\jayden@currentfunction{#1}%
-}
-\newcommand{\funclabel}[1]{%
-  \@bsphack
-  \protected@write\@auxout{}{%
-    \string\newlabel{#1}{{\jayden@currentfunction}{\thepage}}%
-  }%
-  \@esphack
-}
-\makeatother
-\title[%
-	A optimal Controlled Leptospirosis Model%
-	]{
-	A optimal Controlled Leptospirosis Model
-}
-%
-%
- 
-\author[D. Baca]{David Baca-Carrasco}
-\email{\tt francisco.pa@correo.uady.mx}
-\author[S. D\'iaz-Infante]{Saul D\'iaz-Infante}
-\email{\tt sdinfante@conacyt.mx}
-\author[M.A. Acu\~{n}a]{Mauneul Adrian Acu\~{n}a-Zegarra}
-\email{\tt dgonzalezsa@conacyt.mx}
-%
-\address[D. Baca, S. D\'iaz-Infante, ]{
-  Departamento de Matem\'aticas, 
-  CONACYT-Universidad de Sonora,
-  Hermosillo, Sonora.
-}
-\address[S. D\'iaz-Infante]{
-  Departamento de Matem\'aticas, 
-  CONACYT-Universidad de Sonora,
-  Hermosillo, Sonora.
-}
-
-\address[M. A. Acu\~{n}a]{
-  Departamento de Matem\'aticas, 
-  Universidad de Sonora,
-  Hermosillo, Sonora.
-}
-%
-%
-\keywords{%
-  SIR, SEIR, optimal control, epidemic models, 
-  forward-backward-sweep method, Pontryagin maximum principle}
-\subjclass[2010]{49K15, 49M05, 92D30}
-%
+\newtheorem*{remark}{Remark}
+\newtheorem{assumption}{Assumption}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\DeclareRobustCommand{\1}[1]{\ensuremath \mathbbm{1}_{\{#1\}}}
+\journal{Mathematical Biosciences}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\modulolinenumbers[1]
 \begin{document}
-  \begin{abstract}
-    We survey some theoretical results about a family of optimal 
-    control problems that arise in epidemiology. We also implement the
-    so-called forward-backward-sweep method in Python to find approximate
-    optimal control policies via the Pontryagin maximum principle. 
-    In addition, four specific models are described and simulated.
-  \end{abstract}
-\maketitle
-%
-  \section{Introduction}
-  %
- 
-  \section{The uncontrolled leptospirosis model}
+    \begin{frontmatter}
+        \title{
+            Optimal Vaccination control in Leptospiriosis
+        }
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \author[add:unison]{%
+            David Baca Carrasco
+        }%
+        %
+        \author[add:conacyt_unison]{%
+            Sa\'ul D\'iaz-Infante
+            \corref{corresponding_author}
+        }%
+        \ead{
+            saul.diazinfante@unison.mx
+        }
+        \author[add:unison]%
+        {Manuel Adrian Acu\~na Zegarra }
+               \address[add:itson]{
+         ITSON's address
+        }
+
+        \address[add:unison]{
+            Departamento de Matem\'aticas, 
+            Universidad de Sonora,
+            83000, Hermosillo, Mexico
+        }
+        \address[add:conacyt_unison]{
+            CONACYT-Univesrsidad de sonora
+            Departamento de Matem\'aticas, 
+            Divisi\'on de Posgrado
+            Universidad de Sonora,
+            83000, Hermosillo, Mexico
+        }
+
+        \cortext[corresponding_author]{Corresponding author}
+        \begin{abstract}
+            abstract
+        \end{abstract}
+        \begin{keyword}
+            Multi-host, persistence, extinction, stochastic perturbation,
+            vector transmission.
+        \end{keyword}
+    \end{frontmatter}
+    \linenumbers
+    \section{Introduction}
+\section{The uncontrolled leptospirosis model}
       \begin{equation}
         \begin{aligned}
-                \lambda_H &:= \frac{\beta_H B}{k + B}, \qquad
-                \lambda_A := \frac{\beta_A B}{k + B} + \beta_{AA} I_A
+                \lambda_H &:= \frac{\beta_H B}{K + B}, \qquad
+                \lambda_A := \frac{\beta_A B}{K + B} + \beta_{AA} I_A
                 \\
                 \frac{d S_H}{dt} &=
                     b (S_A + (1 - q) I_A + R_A)
@@ -129,7 +95,7 @@
                     \gamma_H I_H - (\mu_H + m) R_H
                 \\
                 \frac{dS_A}{dt} &=
-                    \Lambda + m S_H - \lambda_A S_A - \gamma_A dS_A
+                    \Lambda_A + m S_H - \lambda_A S_A - \gamma_A dS_A
                 \\
                 \frac{d I_A}{dt} &=
                     \lambda_A S_A - (\gamma_H + \gamma_A)   I_A
@@ -143,82 +109,193 @@
       \end{equation}
 
 We also consider a simplified version of the above model.
-    \begin{equation}
+    \begin{equation}\label{main_system}
         \begin{aligned}
-            \lambda_H &:= \beta_H I_H + \bar{\beta}_{AH} I_A
+            \lambda_H &:= \bar{\beta}_{HH} I_H + \bar{\beta}_{AH} I_A,
             \\
-            \lambda_A &:= \beta_A I_H + \bar{\beta}_{AA} I_A
-                + \beta_{AA} I_A
+            \lambda_A &:= \bar{\beta}_{HA} I_H + \bar{\beta}_{AA} I_A
+                + \beta_{AA} I_A,
         \\
             \frac{d S_H}{dt} &=
             b (S_A + (1 - q) I_A + R_A)
-            -\lambda_H S_H - (\mu_H + m) S_H 
+            -\lambda_H S_H - (\mu_H + m) S_H,
         \\
             \frac{d I_H}{dt} &=
             (1 - \sigma)  q  b  I_A
-            + \lambda_H S_H - (\mu_H + \mu_{ij} + \gamma_H)I_H
+            + \lambda_H S_H - (\mu_H + \delta_{H} + \gamma_H)I_H,
         \\
             \frac{d R_H}{dt} &=
-            \gamma_H I_H - (\mu_H + m) R_H
+            \gamma_H I_H - (\mu_H + m) R_H,
         \\
             \frac{dS_A}{dt} &=
-            \Lambda + m S_H - \lambda_A S_A - \gamma_A dS_A
+            \Lambda_A + m S_H - \lambda_A S_A - \mu_A S_A,
         \\
             \frac{d I_A}{dt} &=
-            \lambda_A S_A - (\gamma_H + \gamma_A)   I_A
+            \lambda_A S_A - (\mu_A + \gamma_A)   I_A,
         \\
             \frac{dR_A}{dt} &=
-            m R_H + \gamma_A I_A - \gamma_A R_A
+            m R_H + \gamma_A I_A - \mu_A R_A.
     \end{aligned}
 \end{equation}
 
-    \section{Control policies for Leptospirosis in Live Stock }
-    \paragraph{Notation n}
-    We denote by $u_1(t)$ the proportion of vaccinated live-stock,
+    \section{Control policies for Leptospirosis in Livestock}
+    \paragraph{Notation}
+    We denote by $u_1(t)$ the proportion of vaccinated livestock,
     and by $u_2(t)$ the bacterial fumigation strategies....
     Our controlled model reads:
-    \begin{equation}
+    \begin{equation}\label{controlled_system}
     \begin{aligned}
-        \lambda_H &:= u_2(t) (\bar{\beta}_{HH} I_H + \bar{\beta}_{AH} I_A)
+        \lambda_H &:= u_2(t) (\bar{\beta}_{HH} I_H + \bar{\beta}_{AH} I_A),
         \\
         \lambda_A &:= 
             u_2(t)(\bar{\beta}_{HA} + \bar{\beta}_{AA}) I_A
-        + \bar{\beta}_{AA} I_A
+        + u_1(t)\beta_{AA} I_A,
         \\
         \frac{d S_H}{dt} &=
-        b (S_A + (1 - q) I_A + R_A)
+        b \left[S_A + (1 - q) I_A + R_A\right]
         -\lambda_H S_H - (\mu_H + m) S_H 
-        - u_1(t)  S_H + \alpha_H u_1(t) R_H
+        - u_1(t)  S_H + \alpha_H u_1(t) R_H,
         \\
         \frac{d I_H}{dt} &=
         (1 - \sigma)  q  b  I_A
         + \lambda_H S_H - (\mu_H + \delta_H + \gamma_H)I_H
-        - u_1(t) I_H
+        - u_1(t) I_H,
         \\
         \frac{d R_H}{dt} &=
         \gamma_H I_H - (\mu_H + m) R_H
-        + u_1(t) (S_H + I_H) - \alpha_H u_1(t) R_H
+        + u_1(t) (S_H + I_H) - \alpha_H u_1(t) R_H,
         \\
         \frac{dS_A}{dt} &=
-        \Lambda + m S_H - \lambda_A S_A - \mu_A S_A
-        - u_1(t) S_A + \alpha_R u_1(t) R_A
+        \Lambda_A + m S_H - \lambda_A S_A - \mu_A S_A
+        - u_1(t) S_A + \alpha_A u_1(t) R_A,
         \\
         \frac{d I_A}{dt} &=
         \lambda_A S_A - (\mu_A + \gamma_A)   I_A
-        - u_1(t) I_A
+        - u_1(t) I_A,
         \\
         \frac{dR_A}{dt} &=
         m R_H + \gamma_A I_A - \mu_A R_A
-        + u_1(t) (S_A + I_A) - \alpha_A u_1(t) R_A
+        + u_1(t) (S_A + I_A) - \alpha_A u_1(t) R_A.
     \end{aligned}
 \end{equation}    
     
 
     \section{Existence and characterization of optimal policies}
-    \section{Numerical analysis}
+    Our objective is minimize the cost function defined by
+    \begin{equation}\label{cost_function}
+        \begin{aligned}
+        J(u_{1},u_{2}) = \int_{0}^{t_{f}}\left[a_{1}I_{H}(t) + a_{2}I_{A}(t) + b_{1}u_{1}(t)^2 + b_{2}u_{2}(t)^2\right]dt
+        \end{aligned}
+    \end{equation}
+    
+    We employ Pontryagins Maximum Principle to converts~\eqref{controlled_system} and~\eqref{cost_function} into a problem of minimizing point-wise Hamiltonian $H$, with respect to $(u_{1},u_{2})$. First we formulate the Hamiltonian $H$ from the cost functional~\eqref{cost_function} and the governing dynamics~\eqref{controlled_system}.
+    \begin{equation}
+        \begin{aligned}
+            H = f(t) + g(t)\cdot \lambda(t),
+         \end{aligned}
+    \end{equation}
+    where $f(t)$ is the..., $g(t)$ is the right-side of system~\eqref{controlled_system}, and $\lambda(t) := \left( \lambda_{1}, \lambda_{2}, \lambda_{3}, \lambda_{4}, \lambda_{5}, \lambda_{6} \right)$. It is important to mention that $\lambda_{1}$, $\lambda_{2}$, $\lambda_{3}$, $\lambda_{4}$, $\lambda_{5}$ and $\lambda_{6}$ are the adjoint or co-state variables solutions of the following system:
+    \begin{equation}\label{adjoint_system}
+    \begin{aligned}
+        \frac{d \lambda_{1}}{dt} &=
+        -b (S_{A}(t) + (1 - q) I_{A}(t) + R_{A}(t) ) + (m + \mu_{H}) S_{H}(t) - \alpha_{H} R_{H}(t) u_{1}(t)\\
+        &\quad+ S_{H}(t) u_{1}(t) + (\bar{\beta}_{AH} I_{A}(t) + \bar{\beta}_{HH} I_{H}(t)) S_{H}(t) u_{2}(t),
+        \\
+        \frac{d \lambda_{2}}{dt} &=
+        -b q (1 - \sigma) I_{A}(t) - (\bar{\beta}_{AH} I_{A}(t) + \bar{\beta}_{HH} I_{H}(t)) S_{H}(t) u_{2}(t)  + I_{H}(t) u_{1}(t)\\
+        &\quad + (\gamma_{H} + \delta_{H} + \mu_{H}) I_{H}(t),
+        \\
+        \frac{d \lambda_{3}}{dt} &=
+        -\gamma_{H} I_{H}(t) + (m + \mu_{H}) R_{H}(t) + \alpha_{H} R_{H}(t) u_{1}(t) - (I_{H}(t) + S_{H}(t)) u_{1}(t),
+        \\[0.3cm]
+        \frac{d \lambda_{4}}{dt} &=
+        -\Lambda_{A} - u_{1} \alpha_{A} R_{A}(t) + \mu_{A} S_{A}(t) - m S_{H}(t) + S_{A}(t) (\beta_{AA} I_{A}(t) u_{1}(t)\\
+        &\quad + (\bar{\beta}_{AA} I_{A}(t) + \bar{\beta}_{HA} I_{H}(t)) u_{2}(t)) + S_{A}(t) u_{1}(t),
+        \\
+        \frac{d \lambda_{5}}{dt} &=
+        (\gamma_{A} + \mu_{A}) I_{A}(t) + I_{A}(t) u_{1}(t) - S_{A}(t) (\beta_{AA} I_{A}(t) u_{1}(t) + (\bar{\beta}_{AA} I_{A}(t)\\
+        &\quad + \bar{\beta}_{HA} I_{H}(t)) u_{2}(t)),
+        \\
+        \frac{d \lambda_{6}}{dt} &=
+        -\gamma_{A} I_{A}(t) + \mu_{A} R_{A}(t) - m R_{H}(t) + \alpha_{A} R_{A}(t) u_{1}(t) - (I_{A}(t) + S_{A}(t)) u_{1}(t).
+    \end{aligned}
+\end{equation}
+
+    The optimal conditions are given by solving the following equations by $u_{i}$. 
+    \begin{equation*}
+        \frac{\partial H}{\partial u_{i}} = 0,\quad i=1,2.
+    \end{equation*}
+    Thus,
+    \begin{equation*}
+        \begin{aligned}
+        u_{1}^{*} &= \left(\frac{1}{2b_{1}}\right)
+        \left[ 
+            \lambda_{1}(t)
+            \left(
+            S_{H}(t) - \alpha_{H} R_{H}(t)
+            \right)    
+            + 
+            \lambda_{2}(t) I_{H}(t)
+            + 
+            \lambda_{3}(t)
+            \left(
+            \alpha_{H} R_{H}(t) - S_{H}(t) - I_{H}(t)
+            \right)
+            \right.\\
+            &\quad\quad\quad\quad \left.
+            + 
+            \lambda_{4}(t)
+            \left(
+                \beta_{AA} I_{A}(t) S_{A}(t) + S_{A}(t) - \alpha_{A}R_{A}(t)
+            \right)
+            + 
+            \lambda_{5}(t)
+            \left(
+                I_{A}(t) - \beta_{AA} I_{A}(t) S_{A}(t)
+            \right)
+            \right.\\
+            &\quad\quad\quad\quad \left.            
+            +
+            \lambda_{6}(t)
+            \left(
+                \alpha_{A} R_{A}(t) - S_{A}(t) - I_{A}(t)
+            \right)
+        \right]\\[0.2cm]
+        u_{2}^{*} &= \left(\frac{1}{2b_{2}}\right)
+        \left[
+            \left(
+                \bar{\beta}_{AH} I_{A}(t) S_{H}(t)
+                + 
+                \bar{\beta}_{HH} I_{H}(t) S_{H}(t)
+            \right)
+            \left(
+                \lambda_{1}(t) - \lambda_{2}(t)
+            \right)
+            \right.\\
+            &\quad\quad\quad\quad\quad \left.            
+            +
+            \left(
+                \bar{\beta}_{AA} I_{A}(t) S_{A}(t)
+                +
+                \bar{\beta}_{HA} I_{H}(t) S_{A}(t)
+            \right)
+            \left(
+                \lambda_{4}(t) - \lambda_{5}(t)
+            \right)
+        \right]
+        \end{aligned}
+    \end{equation*}
     \section{Numerical experiments}
     \section{Concluding remarks}
-%
-%  \bibliographystyle{plainnat}
-%  \bibliography{references,OptimalControl-ContinuousControledEpidemicModels}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    \pagebreak
+%    \appendix
+%    \renewcommand*{\thesection}{\appendixname~\Alph{section}}
+%    \renewcommand{\thetheorem}{\Alph{section}.\arabic{theorem}}
+%    \renewcommand{\thedefinition}{\Alph{section}.\arabic{definition}}
+%    \input{Sections/Appendix/appendix}
+    \section*{References}
+    \bibliographystyle{model6-num-names}
+    \bibliography{sde}
 \end{document}
+%

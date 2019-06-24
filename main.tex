@@ -29,6 +29,8 @@
 \DeclareRobustCommand{\1}[1]{\ensuremath \mathbbm{1}_{\{#1\}}}
 \journal{Mathematical Biosciences}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \modulolinenumbers[1]
 \begin{document}
     \begin{frontmatter}
@@ -47,29 +49,26 @@
         \ead{
             saul.diazinfante@unison.mx
         }
-        \author[add:unison]%
-        {Manuel Adrian Acu\~na Zegarra }
-               \address[add:itson]{
+        \author[add:unison]{%
+            Manuel Adrian Acu\~na-Zegarra
+        }%
+    \ead{m.adrian.a.z@gmail.com}
+
+    \address[add:conacyt_unison]{
+        CONACYT-Universidad de Sonora, 
+        Departamento de Matem\'aticas, Boulevard Luis Encinas y 
+        Rosales S/N, 83000, Hermosillo, Sonora, M\'exico.
+    }
+    \address[add:itson]{
          ITSON's address
-        }
-
-<<<<<<< HEAD
-        \address[add:unison]{
-            Departamento de Matem\'aticas, 
-            Universidad de Sonora,
-            83000, Hermosillo, Mexico
-        }
-        \address[add:conacyt_unison]{
-            CONACYT-Univesrsidad de sonora
-            Departamento de Matem\'aticas, 
-            Divisi\'on de Posgrado
-            Universidad de Sonora,
-            83000, Hermosillo, Mexico
-        }
-
+    }
         \cortext[corresponding_author]{Corresponding author}
         \begin{abstract}
-            abstract
+            We survey some theoretical results about a family of optimal 
+            control problems that arise in epidemiology. We also implement the
+            so-called forward-backward-sweep method in Python to find approximate
+            optimal control policies via the Pontryagin maximum principle. 
+            In addition, four specific models are described and simulated.
         \end{abstract}
         \begin{keyword}
             Multi-host, persistence, extinction, stochastic perturbation,
@@ -77,81 +76,11 @@
         \end{keyword}
     \end{frontmatter}
     \linenumbers
-    \section{Introduction}
-=======
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\s}{\subseteq}
-\newcommand{\e}{\varepsilon}
 %
 %
-%
-%%title
-\makeatletter
-\renewcommand{\Function}[2]{%
-  \csname ALG@cmd@\ALG@L @Function\endcsname{#1}{#2}%
-  \def\jayden@currentfunction{#1}%
-}
-\newcommand{\funclabel}[1]{%
-  \@bsphack
-  \protected@write\@auxout{}{%
-    \string\newlabel{#1}{{\jayden@currentfunction}{\thepage}}%
-  }%
-  \@esphack
-}
-\makeatother
-\title[%
-	A optimal Controlled Leptospirosis Model%
-	]{
-	A optimal Controlled Leptospirosis Model
-}
-%
-%
+\section{Introduction}
  
-\author[D. Baca]{David Baca-Carrasco}
-\email{\tt david.baca@itson.edu.mx}
-\author[S. D\'iaz-Infante]{Saul D\'iaz-Infante}
-\email{\tt sdinfante@conacyt.mx}
-\author[M.A. Acu\~{n}a]{Manuel Adrian Acu\~{n}a-Zegarra}
-\email{\tt adrian.acuna@unison.mx}
-%
-\address[D. Baca-Carrasco]{
-  Departamento de Matem\'aticas, 
-  Instituto Tecnológico de Sonora,
-  Cd. Obregón, Sonora.
-}
-\address[S. D\'iaz-Infante]{
-  Departamento de Matem\'aticas, 
-  CONACYT-Universidad de Sonora,
-  Hermosillo, Sonora.
-}
 
-\address[M. A. Acu\~{n}a-Zegarra]{
-  Departamento de Matem\'aticas, 
-  Universidad de Sonora,
-  Hermosillo, Sonora.
-}
-%
-%
-\keywords{%
-  SIR, SEIR, optimal control, epidemic models, 
-  forward-backward-sweep method, Pontryagin maximum principle}
-\subjclass[2010]{49K15, 49M05, 92D30}
-%
-\begin{document}
-  \begin{abstract}
-    We survey some theoretical results about a family of optimal 
-    control problems that arise in epidemiology. We also implement the
-    so-called forward-backward-sweep method in Python to find approximate
-    optimal control policies via the Pontryagin maximum principle. 
-    In addition, four specific models are described and simulated.
-  \end{abstract}
-\maketitle
-%
-  \section{Introduction}
-  %
- 
->>>>>>> 31c41b4fcfef5fca9fe8443b335ae28f6cf686f3
 \section{The uncontrolled leptospirosis model}
       \begin{equation}
         \begin{aligned}
@@ -263,13 +192,13 @@ We also consider a simplified version of the above model.
         \end{aligned}
     \end{equation}
     
-    We employ Pontryagins Maximum Principle to converts~\eqref{controlled_system} and~\eqref{cost_function} into a problem of minimizing point-wise Hamiltonian $H$, with respect to $(u_{1},u_{2})$. First we formulate the Hamiltonian $H$ from the cost functional~\eqref{cost_function} and the governing dynamics~\eqref{controlled_system}.
+    We employ Pontryagin's Maximum Principle to converts~\eqref{controlled_system} and~\eqref{cost_function} into a problem of minimizing point-wise Hamiltonian $H$, with respect to $(u_{1},u_{2})$. First we formulate the Hamiltonian $H$ from the cost functional~\eqref{cost_function} and the governing dynamics~\eqref{controlled_system}.
     \begin{equation}
         \begin{aligned}
             H = f(t) + g(t)\cdot \lambda(t),
          \end{aligned}
     \end{equation}
-    where $f(t)$ is the..., $g(t)$ is the right-side of system~\eqref{controlled_system}, and $\lambda(t) := \left( \lambda_{1}, \lambda_{2}, \lambda_{3}, \lambda_{4}, \lambda_{5}, \lambda_{6} \right)$. It is important to mention that $\lambda_{1}$, $\lambda_{2}$, $\lambda_{3}$, $\lambda_{4}$, $\lambda_{5}$ and $\lambda_{6}$ are the adjoint or co-state variables solutions of the following system:
+    where $f(t)$ is the..., $g(t)$ is the right-side of system~\eqref{controlled_system}, and $\lambda(t) := \left( \lambda_{1}, \lambda_{2}, \lambda_{3}, \lambda_{4}, \lambda_{5}, \lambda_{6} \right)$. It is important to mention that $\lambda_{1}$, $\lambda_{2}$, $\lambda_{3}$, $\lambda_{4}$, $\lambda_{5}$ and $\lambda_{6}$ are the adjoin or co-state variables solutions of the following system:
     \begin{equation}\label{adjoint_system}
     \begin{aligned}
         \frac{d \lambda_{1}}{dt} &=
@@ -329,7 +258,7 @@ We also consider a simplified version of the above model.
                 I_{A}(t) - \beta_{AA} I_{A}(t) S_{A}(t)
             \right)
             \right.\\
-            &\quad\quad\quad\quad \left.            
+            &\quad\quad\quad\quad \left.
             +
             \lambda_{6}(t)
             \left(
@@ -347,7 +276,7 @@ We also consider a simplified version of the above model.
                 \lambda_{1}(t) - \lambda_{2}(t)
             \right)
             \right.\\
-            &\quad\quad\quad\quad\quad \left.            
+            &\quad\quad\quad\quad\quad \left.
             +
             \left(
                 \bar{\beta}_{AA} I_{A}(t) S_{A}(t)
@@ -360,10 +289,7 @@ We also consider a simplified version of the above model.
         \right]
         \end{aligned}
     \end{equation*}
-<<<<<<< HEAD
-=======
     \section{Numerical analysis}
->>>>>>> 31c41b4fcfef5fca9fe8443b335ae28f6cf686f3
     \section{Numerical experiments}
     \section{Concluding remarks}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
